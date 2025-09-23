@@ -1,9 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
     GameManager gameManager;
-    public BallEffects effects;
+    public List<BallEffects> effects;
     public float ppb;
     public float mult;
     public float points;
@@ -20,12 +21,41 @@ public class Ball : MonoBehaviour
             collision.collider.GetComponent<Animation>().Play();
             points += (ppb + collision.collider.GetComponent<Pegs>().ppb) * mult;
             gameManager.ballHitPeg(transform.position, points);
-            /*
-            switch (effects.n) 
+
+            if (effects != null)
             {
-                case 
+                for (int i = 0; i < effects.Count; i++)
+                {
+                    switch (effects[i].effect)
+                    {
+                        case BallEffects.ballEffect.addPPB:
+
+                            if (ppb + effects[i].effectAmount < effects[i].maxAmount || effects[i].maxAmount == 0)
+                                ppb += effects[i].effectAmount;
+                            else if (ppb + effects[i].effectAmount > effects[i].maxAmount)
+                                ppb = effects[i].maxAmount;
+
+                                break;
+
+                        case BallEffects.ballEffect.phibonnachee:
+                            print("phibonnachee is being worked on");
+                            break;
+
+                        case BallEffects.ballEffect.growth:
+                            if (transform.localScale.x * effects[i].effectAmount < effects[i].maxAmount)
+                            {
+                                transform.localScale *= effects[i].effectAmount;
+                            }
+                            else
+                                transform.localScale = new Vector3(effects[i].maxAmount, effects[i].maxAmount, effects[i].maxAmount);
+                            break;
+
+                        default:
+                            Debug.LogWarning(effects[i].effect + " doesn't have code/ isnt set properly");
+                            break;
+                    }
+                }
             }
-            */
         }
     }
 

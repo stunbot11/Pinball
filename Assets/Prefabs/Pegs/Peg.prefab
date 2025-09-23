@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b48958188bd884592228eea89e9fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ppb: 1
+  ppb: 0
 --- !u!58 &7245297852099047545
 CircleCollider2D:
   m_ObjectHideFlags: 0

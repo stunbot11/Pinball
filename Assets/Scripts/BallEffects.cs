@@ -6,8 +6,11 @@ public class BallEffects : ScriptableObject
     public ballEffect effect;
     public enum ballEffect
     {
-        increment,
+        addPPB,
         phibonnachee,
         growth
     }
+
+    public float effectAmount;
+    public float maxAmount;
 }
