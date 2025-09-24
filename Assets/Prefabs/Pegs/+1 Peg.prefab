@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7245297852099047545}
   - component: {fileID: 835480800145097827}
   m_Layer: 0
-  m_Name: Peg
+  m_Name: +1 Peg
   m_TagString: Peg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.21226418, b: 0.21226418, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b48958188bd884592228eea89e9fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ppb: 0
+  ppb: 1
 --- !u!58 &7245297852099047545
 CircleCollider2D:
   m_ObjectHideFlags: 0

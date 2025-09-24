@@ -143,16 +143,18 @@ public class GameManager : MonoBehaviour
 
     public void updatePoints(float pointsToAdd)
     {
-        StartCoroutine(rollPoints(pointsToAdd));
+        float fakePoints = points;
+        points += pointsToAdd;
+        StartCoroutine(rollPoints(fakePoints, pointsToAdd));
     }
 
-    IEnumerator rollPoints(float pointsToAdd)
+    IEnumerator rollPoints(float basePoints, float pointsToAdd)
     {
         float timeBetween = .5f / pointsToAdd;
         for (int i = 0; i < pointsToAdd; i++)
         {
-            points++;
-            pointsTxt.text = "Points: " + points;
+            basePoints++;
+            pointsTxt.text = "Points: " + basePoints;
             yield return new WaitForSeconds(timeBetween);
         }
     }
