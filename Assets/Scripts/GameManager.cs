@@ -130,6 +130,7 @@ public class GameManager : MonoBehaviour
         {
             stats.points += points;
             playerControlls.controls.Disable();
+            stats.round++;
             print("SHOP TIME!!!!!!!!!");
             SceneManager.LoadScene("Shop");
         }

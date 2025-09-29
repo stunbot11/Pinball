@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 009edf17e0cfa554e8adc7d9a5f98d16, type: 3}
   m_Name: Double
   m_EditorClassIdentifier: 
-  ball: {fileID: 5552312552010775883, guid: e9dc915e07379f4408a251c506747180, type: 3}
+  shopItem: {fileID: 0}
+  buyable: {fileID: 5552312552010775883, guid: e9dc915e07379f4408a251c506747180, type: 3}
   Icon: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   baseCost: 20
   shopType: 0

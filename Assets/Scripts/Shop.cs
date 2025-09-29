@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
@@ -122,14 +123,13 @@ public class Shop : MonoBehaviour
             {
                 case BuyableObject.type.Ball:
                     stats.ownedBalls.Add(data.buyable);
-                    Destroy(data.shopItem);
                     break;
 
                 case BuyableObject.type.Peg:
                     stats.ownedPegs.Add(data.buyable);
-                    Destroy(data.shopItem);
                     break;
             }
+            Destroy(EventSystem.current.currentSelectedGameObject.transform.parent.gameObject);
         }
         else
             print("wow loser, you broke");
