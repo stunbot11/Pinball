@@ -4,7 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Shop Item", menuName = "Item")]
 public class BuyableObject : ScriptableObject
 {
-    public GameObject ball;
+    public GameObject shopItem;
+    public GameObject buyable;
     public Sprite Icon;
     public float baseCost;
 
