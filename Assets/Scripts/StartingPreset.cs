@@ -13,4 +13,6 @@ public class StartingPreset : ScriptableObject
 
     public int ballShopSlots;
     public int pegShopSlots;
+
+    public int maxBalls;
 }

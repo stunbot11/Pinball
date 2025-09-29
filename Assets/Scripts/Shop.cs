@@ -117,16 +117,22 @@ public class Shop : MonoBehaviour
     {
         if (stats.points >= data.baseCost)
         {
-            stats.points -= data.baseCost;
+            
             points.text = "Points" + stats.points;
             switch (data.shopType)
             {
                 case BuyableObject.type.Ball:
-                    stats.ownedBalls.Add(data.buyable);
+                    if (stats.ownedBalls.Count < stats.maxBalls)
+                    {
+                        stats.points -= data.baseCost;
+                        stats.ownedBalls.Add(data.buyable);
+                    }
+                    
                     break;
 
                 case BuyableObject.type.Peg:
                     stats.ownedPegs.Add(data.buyable);
+                    stats.points -= data.baseCost;
                     break;
             }
             Destroy(EventSystem.current.currentSelectedGameObject.transform.parent.gameObject);

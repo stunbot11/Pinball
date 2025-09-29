@@ -14,6 +14,8 @@ public class PlayerStats : MonoBehaviour
     public int rFlips;
     public int round;
 
+    public int maxBalls;
+
     [Header("Shop stuff")]
     public int ballShopSlots;
     public int pegShopSlots;
@@ -46,5 +48,7 @@ public class PlayerStats : MonoBehaviour
 
         ballShopSlots = preset.ballShopSlots;
         pegShopSlots = preset.pegShopSlots;
+
+        maxBalls = preset.maxBalls;
     }
 }
