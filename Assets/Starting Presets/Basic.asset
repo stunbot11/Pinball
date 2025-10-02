@@ -32,3 +32,4 @@ MonoBehaviour:
   rFlips: 5
   ballShopSlots: 3
   pegShopSlots: 3
+  maxBalls: 5

@@ -12,11 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a45d2c214ade6ca48a65cab26500e736, type: 3}
   m_Name: One Ball Wonder
   m_EditorClassIdentifier: 
-  presetName: 
-  ownedPegs: []
-  ownedBalls: []
-  lFlips: 0
-  rFlips: 0
-  ballShopSlots: 0
-  pegShopSlots: 0
-  maxBalls: 0
+  presetName: One Ball Wonder
+  ownedBalls:
+  - {fileID: 5552312552010775883, guid: e9dc915e07379f4408a251c506747180, type: 3}
+  ownedPegs:
+  - {fileID: 2368347832262084868, guid: 92b6c62cd97e700449949e4f0f36c4e3, type: 3}
+  - {fileID: 2368347832262084868, guid: 92b6c62cd97e700449949e4f0f36c4e3, type: 3}
+  - {fileID: 2368347832262084868, guid: 92b6c62cd97e700449949e4f0f36c4e3, type: 3}
+  - {fileID: 2368347832262084868, guid: 92b6c62cd97e700449949e4f0f36c4e3, type: 3}
+  - {fileID: 2368347832262084868, guid: 92b6c62cd97e700449949e4f0f36c4e3, type: 3}
+  - {fileID: 2368347832262084868, guid: 92b6c62cd97e700449949e4f0f36c4e3, type: 3}
+  - {fileID: 2368347832262084868, guid: 92b6c62cd97e700449949e4f0f36c4e3, type: 3}
+  - {fileID: 2368347832262084868, guid: 92b6c62cd97e700449949e4f0f36c4e3, type: 3}
+  - {fileID: 2368347832262084868, guid: 92b6c62cd97e700449949e4f0f36c4e3, type: 3}
+  - {fileID: 2368347832262084868, guid: 92b6c62cd97e700449949e4f0f36c4e3, type: 3}
+  - {fileID: 2368347832262084868, guid: 9cd770cb412d32841b83128b14b60132, type: 3}
+  - {fileID: 2368347832262084868, guid: 9cd770cb412d32841b83128b14b60132, type: 3}
+  - {fileID: 2368347832262084868, guid: 9cd770cb412d32841b83128b14b60132, type: 3}
+  - {fileID: 2368347832262084868, guid: 9cd770cb412d32841b83128b14b60132, type: 3}
+  - {fileID: 2368347832262084868, guid: 9cd770cb412d32841b83128b14b60132, type: 3}
+  lFlips: 15
+  rFlips: 15
+  ballShopSlots: 6
+  pegShopSlots: 6
+  maxBalls: 1

@@ -30,6 +30,11 @@ public class GameManager : MonoBehaviour
     public GameObject wrldSpcCnvs;
     public GameObject floatingText;
 
+    [Header("scene difficulty stuff")]
+    public float quotaMult;
+    public int difficulty;
+    public int reward;
+
     private void Start()
     {
         stats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
@@ -70,14 +75,15 @@ public class GameManager : MonoBehaviour
         //load the board with pegs
         for (int i = 0; i < stats.ownedPegs.Count; i++)
         {
-            if (i > availablePegs.Length)
+            if (i >= availablePegs.Length)
                 break;
 
             int randomNum = Random.Range(0, currentPegSlots.Count);
             GameObject p = Instantiate(currentPegs[i]);
             p.transform.position = currentPegSlots[randomNum].position;
             p.transform.position += new Vector3(Random.Range(-.25f, .25f), Random.Range(-.25f, .25f), 0);
-            currentPegSlots.Remove(currentPegSlots[randomNum]);
+            //currentPegSlots.Remove(currentPegSlots[randomNum]);
+            currentPegSlots.RemoveAt(randomNum);
         }
     }
 

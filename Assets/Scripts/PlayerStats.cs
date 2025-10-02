@@ -5,8 +5,11 @@ using UnityEngine.SceneManagement;
 public class PlayerStats : MonoBehaviour
 {
     public StartingPreset preset;
-    public List<GameObject> ownedPegs;
+    public List<StartingPreset> unlockedPresets;
     public List<GameObject> ownedBalls;
+    public List<GameObject> ownedPegs;
+
+    public GameObject presetPrefab;
 
     [Header("Play stuff")]
     public float points;

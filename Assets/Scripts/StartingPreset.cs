@@ -5,8 +5,8 @@ using UnityEngine;
 public class StartingPreset : ScriptableObject
 {
     public string presetName;
-    public List<GameObject> ownedPegs;
     public List<GameObject> ownedBalls;
+    public List<GameObject> ownedPegs;
 
     public int lFlips;
     public int rFlips;

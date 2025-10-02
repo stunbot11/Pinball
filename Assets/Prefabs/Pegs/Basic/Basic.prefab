@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7245297852099047545}
   - component: {fileID: 835480800145097827}
   m_Layer: 0
-  m_Name: Basic Peg
+  m_Name: Basic
   m_TagString: Peg
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
