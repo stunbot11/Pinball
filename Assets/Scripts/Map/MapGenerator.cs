@@ -64,13 +64,25 @@ public class MapGenerator : MonoBehaviour
         StartCoroutine(deletasuarisrex());
     }
 
+    bool hasFrom;
     IEnumerator deletasuarisrex()
     {
-        yield return new WaitForSeconds(.1f);
-        for (int i = allNodes.Count - 1; i > 0; i--)
+        yield return new WaitForSeconds(.001f);
+        for (int i = allNodes.Count - 1; i >= 0; i--)
         {
+            for (int j = 0; j < allNodes[i].fromNodes.Count; j++)
+            {
+                if (allNodes[i].fromNodes[j] != null)
+                    hasFrom = true;
+            }
+
+            if (!hasFrom)
+                Destroy(allNodes[i].gameObject);
+
             if (allNodes[i].fromNodes.Count == 0)
                 Destroy(allNodes[i].gameObject);
+            hasFrom = false;
+            yield return new WaitForSeconds(.001f);
         }
     }
 }

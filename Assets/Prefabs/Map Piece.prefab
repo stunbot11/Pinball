@@ -271,8 +271,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73a3f01b6d0a844196c1b1e5ecb5608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapGen: {fileID: 0}
   toNodes: []
   fromNodes: []
+  possibleToNodes: []
+  test: []
+  lastFloor: 0
+  floor: 0
 --- !u!120 &7531918360508832030
 LineRenderer:
   serializedVersion: 2
@@ -294,6 +299,8 @@ LineRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -315,11 +322,11 @@ LineRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Positions:
-  - {x: 0, y: 0, z: 0}
+  m_Positions: []
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 0.1
