@@ -31,9 +31,7 @@ public class GameManager : MonoBehaviour
     public GameObject floatingText;
 
     [Header("scene difficulty stuff")]
-    public float quotaMult;
-    public int difficulty;
-    public int reward;
+    public float reward;
 
     private void Start()
     {
@@ -46,15 +44,32 @@ public class GameManager : MonoBehaviour
             currentPegSlots.Add(pegSlots[i]);
         }
 
-        quota *= (stats.round + 1);
+        quota *= (stats.floor + 1) * stats.quotaMult;
         quotaTxt.text = "Quota: " + quota;
 
-        points = stats.points;
         pointsTxt.text = "Points: " + points;
+
+        reward = (stats.floor + 1) * 5 * stats.quotaMult;
 
         loadBalls();
         loadBoard();
         insertball();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.G) && Input.GetKey(KeyCode.F) && Input.GetKey(KeyCode.P) && Input.GetKey(KeyCode.N))
+        {
+            points++;
+            pointsTxt.text = "Points: " + points;
+        }
+
+        if (Input.GetKey(KeyCode.E) && Input.GetKey(KeyCode.R) && Input.GetKey(KeyCode.N) && Input.GetKey(KeyCode.P))
+        {
+            ballsLeft.Clear();
+            insertball();
+        }
+            
     }
 
     public void loadBoard()
@@ -134,9 +149,10 @@ public class GameManager : MonoBehaviour
         }
         else if (points >= quota)
         {
-            stats.points += points;
+            stats.points += ((int)(stats.points / 5) > 0 ? (int)(stats.points / 5) : 0);
+            stats.points += reward + (points - quota > 0 ? Mathf.RoundToInt((points - quota) / (5 * (stats.floor + 1))) : 0);
             playerControlls.controls.Disable();
-            stats.round++;
+            //stats.round++;
             print("SHOP TIME!!!!!!!!!");
             SceneManager.LoadScene("Shop");
         }

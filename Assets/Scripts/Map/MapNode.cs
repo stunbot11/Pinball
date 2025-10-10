@@ -1,7 +1,7 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using System.Linq;
-using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class MapNode : MonoBehaviour
 {
@@ -14,7 +14,12 @@ public class MapNode : MonoBehaviour
     private int[] weight = {1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 3, 3, 3, 4, 4, 5};
     private int[] weightToAdd = {5, 11, 14, 16, 17};
     public bool lastFloor;
+    public bool isCurrent;
     public int floor;
+
+    public float quotaMult;
+
+    public string scene;
 
     public void Start()
     {
@@ -51,7 +56,16 @@ public class MapNode : MonoBehaviour
                 toNodes[i].GetComponent<MapNode>().fromNodes.Add(this.gameObject);
                 toNodes[i].gameObject.SetActive(true);
             }
+            GetComponentInChildren<TextMeshProUGUI>().text = quotaMult.ToString();
         }
+    }
+
+    public void loadScene()
+    {
+        PlayerStats stats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
+        stats.floor = floor;
+        stats.quotaMult = quotaMult;
+        SceneManager.LoadScene(scene);
     }
 }
 

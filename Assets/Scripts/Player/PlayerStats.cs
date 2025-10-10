@@ -12,10 +12,11 @@ public class PlayerStats : MonoBehaviour
     public GameObject presetPrefab;
 
     [Header("Play stuff")]
+    public float quotaMult = 1;
     public float points;
     public int lFlips;
     public int rFlips;
-    public int round;
+    public int floor;
 
     public int maxBalls;
 

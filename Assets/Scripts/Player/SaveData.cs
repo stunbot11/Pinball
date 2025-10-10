@@ -12,6 +12,11 @@ public class SaveData : MonoBehaviour
         System.IO.File.WriteAllText(Application.persistentDataPath + "/Inventory.json", inventoryString);
         System.IO.File.WriteAllText(Application.persistentDataPath + "/Unlocked.json", unlocksString);
     }
+
+    public void quit()
+    {
+        Application.Quit();
+    }
 }
 
 [System.Serializable]
