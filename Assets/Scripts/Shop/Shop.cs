@@ -80,14 +80,14 @@ public class Shop : MonoBehaviour
 
     public void loadPegs()
     { //clears the shop of any possible things then spawns new buyable objects
-        for (int i = 0; i < stats.ballShopSlots; i++)
+        for (int i = 0; i < stats.pegShopSlots; i++)
         {
             if (pegShopItem[i] != null)
                 Destroy(pegShopItem[i]);
             if (currentPegShopItemData[i] != null)
                 Destroy(currentPegShopItemData[i]);
 
-            int rNum = Random.Range(0, balls.Count);
+            int rNum = Random.Range(0, pegs.Count);
             currentPegShopItemData[i] = pegs[rNum];
             pegShopItem[i] = Instantiate(basicShopItem, pegShop.transform);
             pegShopItem[i].transform.localPosition = new Vector2(-200 + (200 * i), -25);

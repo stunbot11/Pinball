@@ -68,16 +68,3 @@ public class MapNode : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 }
-
-/*
-        int maxPyNum = 40;
-        int currentNum = 1;
-        int prevNum = 0;
-
-        for (int i = 0; i < maxPyNum; i++) {
-            int tempNum = currentNum;
-            currentNum += prevNum;
-            prevNum = tempNum;
-            System.out.println(i + " pyNum = " + currentNum);
-        }
- */

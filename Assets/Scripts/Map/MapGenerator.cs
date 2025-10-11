@@ -1,9 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class MapGenerator : MonoBehaviour
 {
@@ -58,13 +56,13 @@ public class MapGenerator : MonoBehaviour
         mapHandler.nodeHost = nodeHost;
 
 
-        int length = UnityEngine.Random.Range(minL, maxL);
+        int length = Random.Range(minL, maxL);
         newHost.GetComponent<MapHandler>().floors = length;
         cam.yMax = (length * disBetFloor) - (disBetFloor * 1.75f);
         endNode.transform.position = new Vector3(endNode.transform.position.x, startNode.transform.position.y + (length * disBetFloor) + disBetFloor, startNode.transform.position.z);
         for (int i = 0; i < length; i++)
         {
-            int width = UnityEngine.Random.Range(minRoomsPerFloor, maxRoomsPerFloor);
+            int width = Random.Range(minRoomsPerFloor, maxRoomsPerFloor);
             for (int j = 0; j <= width; j++)
             {
                 GameObject newMapNode = Instantiate(blankMapNode, nodeHost.transform);
@@ -72,10 +70,9 @@ public class MapGenerator : MonoBehaviour
                 MapNode newNode = newMapNode.GetComponent<MapNode>();
                 newNode.floor = length - i;
                 newNode.mapGen = this;
-                newNode.quotaMult = (float)Math.Round(UnityEngine.Random.Range(.75f, 2f), 2);
-                
-                newMapNode.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => updateNodes(newMapNode));
-                newMapNode.GetComponent<UnityEngine.UI.Button>().onClick.AddListener(() => mapHandler.hideMap(newMapNode));
+                newNode.quotaMult = (float)System.Math.Round(Random.Range(.75f, 2f), 2);
+                newMapNode.GetComponent<Button>().onClick.AddListener(() => updateNodes(newMapNode));
+                newMapNode.GetComponent<Button>().onClick.AddListener(() => mapHandler.hideMap(newMapNode));
                 if (i > 0)
                     newNode.possibleToNodes = mapNodes[i - 1];
                 else
@@ -138,7 +135,7 @@ public class MapGenerator : MonoBehaviour
     {
         if (doneGenerating)
         {
-            currentNode.GetComponent<UnityEngine.UI.Image>().color = new Color(Mathf.Lerp(baseColor.r, currentColor.r, time / timeToChange),
+            currentNode.GetComponent<Image>().color = new Color(Mathf.Lerp(baseColor.r, currentColor.r, time / timeToChange),
                 Mathf.Lerp(baseColor.g, currentColor.g, time / timeToChange), Mathf.Lerp(baseColor.b, currentColor.b, time / timeToChange));
             time += tMinus ? -Time.deltaTime : Time.deltaTime;
             if (time > timeToChange)
@@ -148,7 +145,7 @@ public class MapGenerator : MonoBehaviour
 
             for (int i = 0; i < currentToNodes.Count; i++)
             {
-                currentToNodes[i].GetComponent<UnityEngine.UI.Image>().color = new Color(Mathf.Lerp(baseColor.r, toColor.r, time / timeToChange),
+                currentToNodes[i].GetComponent<Image>().color = new Color(Mathf.Lerp(baseColor.r, toColor.r, time / timeToChange),
                 Mathf.Lerp(baseColor.g, toColor.g, time / timeToChange), Mathf.Lerp(baseColor.b, toColor.b, time / timeToChange));
             }
         }
@@ -156,11 +153,11 @@ public class MapGenerator : MonoBehaviour
 
     public void updateNodes(GameObject newCurrent)
     {
-        currentNode.GetComponent<UnityEngine.UI.Image>().color = baseColor;
+        currentNode.GetComponent<Image>().color = baseColor;
         for (int i = 0; i < currentToNodes.Count; i++)
         {
-            currentToNodes[i].GetComponent<UnityEngine.UI.Image>().color = baseColor;
-            currentToNodes[i].GetComponent<UnityEngine.UI.Button>().interactable = false;
+            currentToNodes[i].GetComponent<Image>().color = baseColor;
+            currentToNodes[i].GetComponent<Button>().interactable = false;
         }
             
         currentToNodes.Clear();
@@ -168,7 +165,7 @@ public class MapGenerator : MonoBehaviour
         for (int i = 0; i < currentNode.GetComponent<MapNode>().toNodes.Count; i++)
         {
             currentToNodes.Add(currentNode.GetComponent<MapNode>().toNodes[i]);
-            currentToNodes[i].GetComponent<UnityEngine.UI.Button>().interactable = true;
+            currentToNodes[i].GetComponent<Button>().interactable = true;
         }
         mapHandler.toNodes = currentToNodes;
     }

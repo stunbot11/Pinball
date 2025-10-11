@@ -15,6 +15,6 @@ MonoBehaviour:
   shopItem: {fileID: 0}
   buyable: {fileID: 5552312552010775883, guid: e9dc915e07379f4408a251c506747180, type: 3}
   Icon: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  baseCost: 20
+  baseCost: 5
   shopType: 0
   rarity: 0

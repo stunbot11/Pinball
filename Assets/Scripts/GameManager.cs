@@ -54,6 +54,7 @@ public class GameManager : MonoBehaviour
         loadBalls();
         loadBoard();
         insertball();
+        //Time.timeScale = .25f;
     }
 
     private void Update()
@@ -158,6 +159,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            if (GameObject.Find("Map Holder(Clone)") != null)
+                Destroy(GameObject.Find("Map Holder(Clone)"));
             playerControlls.controls.Disable();
             print("you lost...");
             SceneManager.LoadScene("Lose Screen");

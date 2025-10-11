@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: Basic
   m_EditorClassIdentifier: 
   presetName: Basic
+  ownedBalls:
+  - {fileID: 5552312552010775883, guid: f60da6b55b9fa1041bc36795f374727b, type: 3}
+  - {fileID: 5552312552010775883, guid: f60da6b55b9fa1041bc36795f374727b, type: 3}
+  - {fileID: 5552312552010775883, guid: e9dc915e07379f4408a251c506747180, type: 3}
   ownedPegs:
   - {fileID: 2368347832262084868, guid: 9cd770cb412d32841b83128b14b60132, type: 3}
   - {fileID: 2368347832262084868, guid: 9cd770cb412d32841b83128b14b60132, type: 3}
@@ -24,10 +28,6 @@ MonoBehaviour:
   - {fileID: 2368347832262084868, guid: 9cd770cb412d32841b83128b14b60132, type: 3}
   - {fileID: 2368347832262084868, guid: 9cd770cb412d32841b83128b14b60132, type: 3}
   - {fileID: 2368347832262084868, guid: 9cd770cb412d32841b83128b14b60132, type: 3}
-  ownedBalls:
-  - {fileID: 5552312552010775883, guid: f60da6b55b9fa1041bc36795f374727b, type: 3}
-  - {fileID: 5552312552010775883, guid: f60da6b55b9fa1041bc36795f374727b, type: 3}
-  - {fileID: 5552312552010775883, guid: e9dc915e07379f4408a251c506747180, type: 3}
   lFlips: 5
   rFlips: 5
   ballShopSlots: 3

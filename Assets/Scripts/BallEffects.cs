@@ -8,9 +8,17 @@ public class BallEffects : ScriptableObject
     {
         addPPB,
         phibonnachee,
-        growth
+        growth,
+        refreshPegs
     }
 
     public float effectAmount;
     public float maxAmount;
+
+    [Header("Happen Time")]
+    public bool onLoad;
+    public bool onHit;
+    public bool onLoss;
+    public bool onCrit;
+    public bool onChance;
 }
