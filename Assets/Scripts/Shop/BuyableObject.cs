@@ -13,7 +13,8 @@ public class BuyableObject : ScriptableObject
     public enum type
     {
         Ball,
-        Peg
+        Peg,
+        Modifier
     }
 
     public rareness rarity;

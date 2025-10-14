@@ -43,6 +43,14 @@ public class Ball : MonoBehaviour
                     transform.localScale = new Vector3(effects[i].maxAmount, effects[i].maxAmount, effects[i].maxAmount);
                 break;
 
+            case BallEffects.ballEffect.refreshPegs:
+                gameManager.loadBoard();
+                break;
+
+            case BallEffects.ballEffect.ticketGain:
+                gameManager.stats.tickets += effects[i].effectAmount;
+                break;
+
             default:
                 Debug.LogWarning(effects[i].effect + " doesn't have code/ isnt set properly");
                 break;
@@ -57,6 +65,7 @@ public class Ball : MonoBehaviour
         { 
             for (int i = 0; i < effects.Count; i++)
             {
+                if (!effects[i].onChance || Random.Range(0, 1f) < effects[i].effectAmount)
                 switch (thingToCheckFor)
                 {
                     case "onLoad":
@@ -68,10 +77,6 @@ public class Ball : MonoBehaviour
                         break;
 
                     case "onLoss":
-                        ballEffect(i);
-                        break;
-
-                    case "onChance":
                         ballEffect(i);
                         break;
 

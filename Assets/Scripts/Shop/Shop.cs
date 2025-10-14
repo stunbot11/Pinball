@@ -32,7 +32,7 @@ public class Shop : MonoBehaviour
     private void Start()
     {
         stats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
-        points.text = "Points" + stats.points;
+        points.text = "Points" + stats.tickets;
         rBallTxt.text = "Refresh: " + rBallCost;
         rPegTxt.text = "Refresh: " + rPegCost;
         ballShopItem = new GameObject[stats.ballShopSlots];
@@ -68,12 +68,12 @@ public class Shop : MonoBehaviour
 
     public void refreshBalls()
     {
-        if (stats.points >= rBallCost)
+        if (stats.tickets >= rBallCost)
         {
-            stats.points -= rBallCost;
+            stats.tickets -= rBallCost;
             rBallCost *= refreshMult;
             rBallTxt.text = "Refresh: " + rBallCost;
-            points.text = "Points" + stats.points;
+            points.text = "Tickets: " + stats.tickets;
             loadBalls();
         }
     }
@@ -103,19 +103,19 @@ public class Shop : MonoBehaviour
 
     public void refreshPegs()
     {
-        if (stats.points >= rBallCost)
+        if (stats.tickets >= rBallCost)
         {
-            stats.points -= rPegCost;
+            stats.tickets -= rPegCost;
             rPegCost *= refreshMult;
             rPegTxt.text = "Refresh: " + rPegCost;
-            points.text = "Points" + stats.points;
+            points.text = "Points" + stats.tickets;
             loadPegs();
         }
     }
 
     public void buy(BuyableObject data)
     {
-        if (stats.points >= data.baseCost)
+        if (stats.tickets >= data.baseCost)
         {
             switch (data.shopType)
             {
@@ -123,7 +123,7 @@ public class Shop : MonoBehaviour
                     if (stats.ownedBalls.Count < stats.maxBalls)
                     {
                         stats.ownedBalls.Add(data.buyable);
-                        stats.points -= data.baseCost;
+                        stats.tickets -= data.baseCost;
                         Destroy(EventSystem.current.currentSelectedGameObject.transform.parent.gameObject);
                     }
                     else
@@ -133,11 +133,11 @@ public class Shop : MonoBehaviour
 
                 case BuyableObject.type.Peg:
                     stats.ownedPegs.Add(data.buyable);
-                    stats.points -= data.baseCost;
+                    stats.tickets -= data.baseCost;
                     Destroy(EventSystem.current.currentSelectedGameObject.transform.parent.gameObject);
                     break;
             }
-            points.text = "Points" + stats.points;
+            points.text = "Points" + stats.tickets;
             
         }
         else

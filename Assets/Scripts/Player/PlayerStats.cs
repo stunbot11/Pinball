@@ -6,6 +6,7 @@ public class PlayerStats : MonoBehaviour
 {
     public StartingPreset preset;
     public List<StartingPreset> unlockedPresets;
+    public List<GameObject> mods;
     public List<GameObject> ownedBalls;
     public List<GameObject> ownedPegs;
 
@@ -13,7 +14,7 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Play stuff")]
     public float quotaMult = 1;
-    public float points;
+    public float tickets;
     public int lFlips;
     public int rFlips;
     public int floor;

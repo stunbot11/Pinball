@@ -9,7 +9,8 @@ public class BallEffects : ScriptableObject
         addPPB,
         phibonnachee,
         growth,
-        refreshPegs
+        refreshPegs,
+        ticketGain
     }
 
     public float effectAmount;
@@ -20,5 +21,7 @@ public class BallEffects : ScriptableObject
     public bool onHit;
     public bool onLoss;
     public bool onCrit;
+
     public bool onChance;
+    public float chance01;
 }

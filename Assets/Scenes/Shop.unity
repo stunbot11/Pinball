@@ -504,6 +504,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e1c3119c46e82894488cb6c4c2c9f48d, type: 2}
   - {fileID: 11400000, guid: 78cad9426ccdfca439bd0270c98e554e, type: 2}
   - {fileID: 11400000, guid: b360f94fa8cdac247a453846a98c71d8, type: 2}
+  - {fileID: 11400000, guid: 875250fe3c14806428179a39dcdddfdf, type: 2}
+  - {fileID: 11400000, guid: d965259c98a02204780dfe071af7f145, type: 2}
   pegs:
   - {fileID: 11400000, guid: 3e567cfabea94134ebb7f217d98a63d5, type: 2}
   - {fileID: 11400000, guid: b448e5741f2ab1748a38f3c1d6023154, type: 2}
@@ -1622,11 +1624,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preset: {fileID: 11400000, guid: b5ae38c2cf2ffd447be28568fc2319f3, type: 2}
   unlockedPresets: []
+  mods: []
   ownedBalls: []
   ownedPegs: []
   presetPrefab: {fileID: 0}
   quotaMult: 0
-  points: 500
+  tickets: 0
   lFlips: 0
   rFlips: 0
   floor: 0
