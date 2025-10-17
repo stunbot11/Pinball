@@ -25,6 +25,7 @@ public class MapNode : MonoBehaviour
     {
         //112223345
         //25789
+        scene = Random.Range(0, 2) == 0 ? "Board 1" : "Board 2";
         if (!lastFloor)
         {
             path = GetComponent<LineRenderer>();
