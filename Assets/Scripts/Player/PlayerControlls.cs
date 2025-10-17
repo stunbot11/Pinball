@@ -6,8 +6,8 @@ public class PlayerControlls : MonoBehaviour
     private GameManager gameManager;
     [HideInInspector] public Controls controls;
 
-    public Rigidbody2D PLRB;
-    public Rigidbody2D PRRB;
+    public Rigidbody2D[] PLRB;
+    public Rigidbody2D[] PRRB;
 
     public int maxLU;
     [HideInInspector] public int leftUses;
@@ -48,10 +48,16 @@ public class PlayerControlls : MonoBehaviour
     private void FixedUpdate()
     {
         if (controls.Paddles.Right.IsInProgress())
-            PRRB.AddForceY(paddleForce);
+        {
+            for (int i = 0; i < PRRB.Length; i++)
+                PRRB[i].AddForceY(paddleForce);
+        }
 
         if (controls.Paddles.Left.IsInProgress())
-            PLRB.AddForceY(paddleForce);
+        {
+            for (int i = 0; i < PLRB.Length; i++)
+                PLRB[i].AddForceY(paddleForce);
+        }    
 
         if (controls.Paddles.Launch.inProgress && !ballInPlay)
             launchTime += Time.deltaTime;
@@ -73,26 +79,34 @@ public class PlayerControlls : MonoBehaviour
     {
         if (phase.started && rightUses > 0 && ballInPlay)
         {
-            PRRB.GetComponent<HingeJoint2D>().useMotor = false;
+            for (int i = 0; i < PRRB.Length; i++)
+                PRRB[i].GetComponent<HingeJoint2D>().useMotor = false;
             rightUses--;
             gameManager.RUtxt.text = "Right Uses Left: " + rightUses;
         }
 
         if (phase.canceled)
-            PRRB.GetComponent<HingeJoint2D>().useMotor = true;
+        {
+            for (int i = 0; i < PRRB.Length; i++)
+                PRRB[i].GetComponent<HingeJoint2D>().useMotor = true;
+        }
     }
 
     public void left(InputAction.CallbackContext phase)
     {
         if (phase.started && leftUses > 0 && ballInPlay)
         {
-            PLRB.GetComponent<HingeJoint2D>().useMotor = false;
+            for (int i = 0; i < PLRB.Length; i++)
+                PLRB[i].GetComponent<HingeJoint2D>().useMotor = false;
             leftUses--;
             gameManager.LUtxt.text = "Left Uses Left: " + leftUses;
         }
             
 
         if (phase.canceled)
-            PLRB.GetComponent<HingeJoint2D>().useMotor = true;
+        {
+            for (int i = 0; i < PLRB.Length; i++)
+                PLRB[i].GetComponent<HingeJoint2D>().useMotor = true;
+        }
     }
 }

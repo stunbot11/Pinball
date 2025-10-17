@@ -506,16 +506,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b360f94fa8cdac247a453846a98c71d8, type: 2}
   - {fileID: 11400000, guid: 875250fe3c14806428179a39dcdddfdf, type: 2}
   - {fileID: 11400000, guid: d965259c98a02204780dfe071af7f145, type: 2}
+  - {fileID: 11400000, guid: 77b78e6254fa86f47a70d475022cb246, type: 2}
   pegs:
   - {fileID: 11400000, guid: 3e567cfabea94134ebb7f217d98a63d5, type: 2}
   - {fileID: 11400000, guid: b448e5741f2ab1748a38f3c1d6023154, type: 2}
-  basicShopItem: {fileID: 7831991076514032538, guid: 87299220a10f3264bb1b7cb551561d9d, type: 3}
+  mods: []
+  shopItemTemplate: {fileID: 7831991076514032538, guid: 87299220a10f3264bb1b7cb551561d9d, type: 3}
   ballShop: {fileID: 556720092}
   pegShop: {fileID: 1562839527}
+  modShop: {fileID: 0}
   ballShopItem: []
   pegShopItem: []
+  modShopItem: []
   currentBallShopItemData: []
   currentPegShopItemData: []
+  currentModShopItemData: []
   rBallCost: 5
   rPegCost: 5
   refreshMult: 1.5
@@ -1609,7 +1614,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &778647293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1636,6 +1641,7 @@ MonoBehaviour:
   maxBalls: 0
   ballShopSlots: 0
   pegShopSlots: 0
+  modShopSlots: 0
 --- !u!4 &778647294
 Transform:
   m_ObjectHideFlags: 0

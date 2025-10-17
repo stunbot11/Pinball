@@ -12,17 +12,22 @@ public class Shop : MonoBehaviour
     public TextMeshProUGUI rBallTxt;
     public TextMeshProUGUI rPegTxt;
 
+
     public List<BuyableObject> balls;
     public List<BuyableObject> pegs;
+    public List<BuyableObject> mods;
 
-    public GameObject basicShopItem;
+    public GameObject shopItemTemplate;
     public GameObject ballShop;
     public GameObject pegShop;
+    public GameObject modShop;
     public GameObject[] ballShopItem;
     public GameObject[] pegShopItem;
+    public GameObject[] modShopItem;
 
     public BuyableObject[] currentBallShopItemData;
     public BuyableObject[] currentPegShopItemData;
+    public BuyableObject[] currentModShopItemData;
 
     [Header("Costs")]
     public float rBallCost = 5;
@@ -54,7 +59,7 @@ public class Shop : MonoBehaviour
 
             int rNum = Random.Range(0, balls.Count);
             currentBallShopItemData[i] = balls[rNum];
-            ballShopItem[i] = Instantiate(basicShopItem, ballShop.transform);
+            ballShopItem[i] = Instantiate(shopItemTemplate, ballShop.transform);
             ballShopItem[i].transform.localPosition = new Vector2(-200 + (200 * i), -25);
             ballShopItem[i].GetComponentInChildren<BoxCollider2D>().GetComponent<TextMeshProUGUI>().text = balls[rNum].name;
             ballShopItem[i].name = balls[rNum].name;
@@ -89,7 +94,7 @@ public class Shop : MonoBehaviour
 
             int rNum = Random.Range(0, pegs.Count);
             currentPegShopItemData[i] = pegs[rNum];
-            pegShopItem[i] = Instantiate(basicShopItem, pegShop.transform);
+            pegShopItem[i] = Instantiate(shopItemTemplate, pegShop.transform);
             pegShopItem[i].transform.localPosition = new Vector2(-200 + (200 * i), -25);
             pegShopItem[i].GetComponentInChildren<BoxCollider2D>().GetComponent<TextMeshProUGUI>().text = pegs[rNum].name;
             pegShopItem[i].name = pegs[rNum].name;
@@ -110,6 +115,29 @@ public class Shop : MonoBehaviour
             rPegTxt.text = "Refresh: " + rPegCost;
             points.text = "Points" + stats.tickets;
             loadPegs();
+        }
+    }
+
+    public void loadMods()
+    { //clears the shop of any possible things then spawns new buyable objects
+        for (int i = 0; i < stats.modShopSlots; i++)
+        {
+            if (modShopItem[i] != null)
+                Destroy(modShopItem[i]);
+            if (currentModShopItemData[i] != null)
+                Destroy(currentModShopItemData[i]);
+
+            int rNum = Random.Range(0, mods.Count);
+            currentModShopItemData[i] = mods[rNum];
+            modShopItem[i] = Instantiate(shopItemTemplate, modShop.transform);
+            modShopItem[i].transform.localPosition = new Vector2(-200 + (200 * i), -25);
+            modShopItem[i].GetComponentInChildren<BoxCollider2D>().GetComponent<TextMeshProUGUI>().text = mods[rNum].name;
+            modShopItem[i].name = mods[rNum].name;
+            modShopItem[i].GetComponentInChildren<CapsuleCollider2D>().GetComponent<Image>().sprite = mods[rNum].Icon;
+            modShopItem[i].GetComponentInChildren<CircleCollider2D>().GetComponent<TextMeshProUGUI>().text = mods[rNum].baseCost.ToString();
+            int modNum = i;
+            modShopItem[i].GetComponentInChildren<Button>().onClick.AddListener(() => buy(currentModShopItemData[modNum]));
+            mods[rNum].shopItem = modShopItem[i];
         }
     }
 

@@ -6,9 +6,9 @@ public class PlayerStats : MonoBehaviour
 {
     public StartingPreset preset;
     public List<StartingPreset> unlockedPresets;
-    public List<GameObject> mods;
     public List<GameObject> ownedBalls;
     public List<GameObject> ownedPegs;
+    public List<GameObject> mods;
 
     public GameObject presetPrefab;
 
@@ -18,12 +18,14 @@ public class PlayerStats : MonoBehaviour
     public int lFlips;
     public int rFlips;
     public int floor;
-
     public int maxBalls;
+
+    public float modMult;
 
     [Header("Shop stuff")]
     public int ballShopSlots;
     public int pegShopSlots;
+    public int modShopSlots;
 
     private void Awake()
     {

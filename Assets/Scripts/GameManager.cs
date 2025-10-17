@@ -150,7 +150,7 @@ public class GameManager : MonoBehaviour
         }
         else if (points >= quota)
         {
-            stats.tickets += ((int)(stats.tickets / 5) > 0 ? (int)(stats.tickets / 5) : 0);
+            stats.tickets += (stats.tickets % 5 == 0) ? (int)(stats.tickets / 5) : 0;
             stats.tickets += reward + (points - quota > 0 ? Mathf.RoundToInt((points - quota) / (5 * (stats.floor + 1))) : 0);
             playerControlls.controls.Disable();
             //stats.round++;
