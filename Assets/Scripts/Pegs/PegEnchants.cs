@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class PegEnchants : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    Pegs peg;
+    public enchant enchants;
+    public enum enchant
     {
-        
+        moving,
+        doubleEffect
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        peg = GetComponent<Pegs>();
+        peg.enchants = this;
     }
 }

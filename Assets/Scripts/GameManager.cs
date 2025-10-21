@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     [HideInInspector] public PlayerControlls playerControlls;
     [HideInInspector] public PlayerStats stats;
+    public int ballsAlive;
 
     private bool[] availablePegs;
     public Transform[] pegSlots;
@@ -135,35 +136,42 @@ public class GameManager : MonoBehaviour
 
     public void insertball()
     {
-        if (ballsLeft.Count > 0)
-        {
-            GameObject b = Instantiate(ballsLeft[0]);
-            b.transform.position = ballSpawnPoint.transform.position;
-            playerControlls.ball = b;
-            playerControlls.ballInPlay = false;
-            ballsLeft.Remove(ballsLeft[0]);
-            ballsLeftTxt.text = "Balls: " + ballsLeft.Count;
-            playerControlls.leftUses = playerControlls.maxLU;
-            playerControlls.rightUses = playerControlls.maxRU;
-            LUtxt.text = "Left Uses Left: " + playerControlls.leftUses;
-            RUtxt.text = "Right Uses Left: " + playerControlls.rightUses;
-        }
-        else if (points >= quota)
-        {
-            stats.tickets += (stats.tickets % 5 == 0) ? (int)(stats.tickets / 5) : 0;
-            stats.tickets += reward + (points - quota > 0 ? Mathf.RoundToInt((points - quota) / (5 * (stats.floor + 1))) : 0);
-            playerControlls.controls.Disable();
-            //stats.round++;
-            print("SHOP TIME!!!!!!!!!");
-            SceneManager.LoadScene("Shop");
-        }
+        if (ballsAlive > 1)
+            ballsAlive--;
         else
         {
-            if (GameObject.Find("Map Holder(Clone)") != null)
-                Destroy(GameObject.Find("Map Holder(Clone)"));
-            playerControlls.controls.Disable();
-            print("you lost...");
-            SceneManager.LoadScene("Lose Screen");
+            ballsAlive = 0;
+            ballsAlive++;
+            if (ballsLeft.Count > 0)
+            {
+                GameObject b = Instantiate(ballsLeft[0]);
+                b.transform.position = ballSpawnPoint.transform.position;
+                playerControlls.ball = b;
+                playerControlls.ballInPlay = false;
+                ballsLeft.Remove(ballsLeft[0]);
+                ballsLeftTxt.text = "Balls: " + ballsLeft.Count;
+                playerControlls.leftUses = playerControlls.maxLU;
+                playerControlls.rightUses = playerControlls.maxRU;
+                LUtxt.text = "Left Uses Left: " + playerControlls.leftUses;
+                RUtxt.text = "Right Uses Left: " + playerControlls.rightUses;
+            }
+            else if (points >= quota)
+            {
+                stats.tickets += (stats.tickets % 5 == 0) ? (int)(stats.tickets / 5) : 0;
+                stats.tickets += reward + (points - quota > 0 ? Mathf.RoundToInt((points - quota) / (5 * (stats.floor + 1))) : 0);
+                playerControlls.controls.Disable();
+                //stats.round++;
+                print("SHOP TIME!!!!!!!!!");
+                SceneManager.LoadScene("Shop");
+            }
+            else
+            {
+                if (GameObject.Find("Map Holder(Clone)") != null)
+                    Destroy(GameObject.Find("Map Holder(Clone)"));
+                playerControlls.controls.Disable();
+                print("you lost...");
+                SceneManager.LoadScene("Lose Screen");
+            }
         }
     }
 

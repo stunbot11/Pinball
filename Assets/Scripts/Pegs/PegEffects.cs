@@ -1,16 +1,22 @@
 using UnityEngine;
 
-public class PegEffects : MonoBehaviour
+[CreateAssetMenu(fileName = "New Peg Effect", menuName = "Peg Effect")]
+public class PegEffects : ScriptableObject
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public pegEffect effect;
+    public enum pegEffect
     {
-        
+        ballSplitter,
+        ballLoader
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float effectAmount;
+    public float maxAmount;
+
+    [Header("Happen Time")]
+    public bool onHit;
+    public bool onCrit;
+    public bool onChance;
+
+    public float chance01;
 }

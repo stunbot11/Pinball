@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -29,15 +29,18 @@ public class Shop : MonoBehaviour
     public BuyableObject[] currentPegShopItemData;
     public BuyableObject[] currentModShopItemData;
 
-    [Header("Costs")]
+    [Header("Costs/Chances")]
     public float rBallCost = 5;
+    public float ballEnchantChance;
     public float rPegCost = 5;
+    public float pegEnchantChance;
     public float refreshMult = 1.5f;
+    public float modEnchantChance;
 
     private void Start()
     {
         stats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
-        points.text = "Points" + stats.tickets;
+        points.text = "Tickets: " + stats.tickets;
         rBallTxt.text = "Refresh: " + rBallCost;
         rPegTxt.text = "Refresh: " + rPegCost;
         ballShopItem = new GameObject[stats.ballShopSlots];
@@ -76,7 +79,7 @@ public class Shop : MonoBehaviour
         if (stats.tickets >= rBallCost)
         {
             stats.tickets -= rBallCost;
-            rBallCost *= refreshMult;
+            rBallCost = System.MathF.Round(rBallCost * refreshMult, 1);
             rBallTxt.text = "Refresh: " + rBallCost;
             points.text = "Tickets: " + stats.tickets;
             loadBalls();
@@ -103,17 +106,21 @@ public class Shop : MonoBehaviour
             int pegnum = i;
             pegShopItem[pegnum].GetComponentInChildren<Button>().onClick.AddListener(() => buy(currentPegShopItemData[pegnum]));
             pegs[rNum].shopItem = pegShopItem[i];
+            if (Random.Range(0, 1f) <= pegEnchantChance)
+            {
+                pegs[rNum].AddComponent<PegEnchants>();
+            }
         }
     }
 
     public void refreshPegs()
     {
-        if (stats.tickets >= rBallCost)
+        if (stats.tickets >= rPegCost)
         {
             stats.tickets -= rPegCost;
-            rPegCost *= refreshMult;
+            rPegCost = System.MathF.Round(rPegCost * refreshMult, 1);
             rPegTxt.text = "Refresh: " + rPegCost;
-            points.text = "Points" + stats.tickets;
+            points.text = "Tickets: " + stats.tickets;
             loadPegs();
         }
     }
@@ -141,7 +148,7 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void buy(BuyableObject data)
+    public void buy(BuyableObject data, bool enchanted = false)
     {
         if (stats.tickets >= data.baseCost)
         {
@@ -151,6 +158,8 @@ public class Shop : MonoBehaviour
                     if (stats.ownedBalls.Count < stats.maxBalls)
                     {
                         stats.ownedBalls.Add(data.buyable);
+                        if (enchanted)
+                            stats.ownedBalls[stats.ownedBalls.Count - 1].AddComponent<BallEnchants>();
                         stats.tickets -= data.baseCost;
                         Destroy(EventSystem.current.currentSelectedGameObject.transform.parent.gameObject);
                     }
@@ -161,11 +170,13 @@ public class Shop : MonoBehaviour
 
                 case BuyableObject.type.Peg:
                     stats.ownedPegs.Add(data.buyable);
+                    if (enchanted)
+                        stats.ownedPegs[stats.ownedPegs.Count - 1].AddComponent<PegEnchants>();
                     stats.tickets -= data.baseCost;
                     Destroy(EventSystem.current.currentSelectedGameObject.transform.parent.gameObject);
                     break;
             }
-            points.text = "Points" + stats.tickets;
+            points.text = "Tickets: " + stats.tickets;
             
         }
         else

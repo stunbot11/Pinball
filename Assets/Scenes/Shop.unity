@@ -510,6 +510,7 @@ MonoBehaviour:
   pegs:
   - {fileID: 11400000, guid: 3e567cfabea94134ebb7f217d98a63d5, type: 2}
   - {fileID: 11400000, guid: b448e5741f2ab1748a38f3c1d6023154, type: 2}
+  - {fileID: 11400000, guid: 0e33b632462ef3e4992fc5a4885f29d4, type: 2}
   mods: []
   shopItemTemplate: {fileID: 7831991076514032538, guid: 87299220a10f3264bb1b7cb551561d9d, type: 3}
   ballShop: {fileID: 556720092}
@@ -522,8 +523,11 @@ MonoBehaviour:
   currentPegShopItemData: []
   currentModShopItemData: []
   rBallCost: 5
+  ballEnchantChance: 0
   rPegCost: 5
+  pegEnchantChance: 0
   refreshMult: 1.5
+  modEnchantChance: 0
 --- !u!4 &158878662
 Transform:
   m_ObjectHideFlags: 0
@@ -1614,7 +1618,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &778647293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1629,16 +1633,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   preset: {fileID: 11400000, guid: b5ae38c2cf2ffd447be28568fc2319f3, type: 2}
   unlockedPresets: []
-  mods: []
   ownedBalls: []
   ownedPegs: []
+  mods: []
   presetPrefab: {fileID: 0}
   quotaMult: 0
-  tickets: 0
+  tickets: 100000
   lFlips: 0
   rFlips: 0
   floor: 0
   maxBalls: 0
+  modMult: 0
   ballShopSlots: 0
   pegShopSlots: 0
   modShopSlots: 0
