@@ -19,13 +19,14 @@ public class MapNode : MonoBehaviour
 
     public float quotaMult;
 
+    public int playableScenes;
     public string scene;
 
     public void Start()
     {
         //112223345
         //25789
-        scene = Random.Range(0, 2) == 0 ? "Board 1" : "Board 2";
+        scene = "Board " + Random.Range(1, playableScenes + 1);
         if (!lastFloor)
         {
             path = GetComponent<LineRenderer>();

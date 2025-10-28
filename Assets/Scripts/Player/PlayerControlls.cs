@@ -26,7 +26,7 @@ public class PlayerControlls : MonoBehaviour
     public bool ballInPlay;
 
 
-    void Start()
+    public void sceneStart()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         controls = new Controls();

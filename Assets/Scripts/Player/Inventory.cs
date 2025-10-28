@@ -14,14 +14,19 @@ public class Inventory : MonoBehaviour
 
     public List<string> ballNames;
     public List<string> pegNames;
+    public List<GameObject> invItems;
 
-    private void Start()
+    public void loadInventory(bool canDelete = false)
     {
-        stats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
-        loadInventory();
-    }
-    public void loadInventory()
-    {
+        if (stats == null)
+            stats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
+        if (invItems.Count > 0)
+        {
+            ballNames.Clear();
+            pegNames.Clear();
+            clearInventory();
+        }
+        
         int num = 0;
         for (int i = 0; i < stats.ownedBalls.Count; i++) //loads the amount of balls you have into the inventory
         {
@@ -33,22 +38,33 @@ public class Inventory : MonoBehaviour
                 newItem.GetComponentInChildren<BoxCollider2D>().GetComponent<TextMeshProUGUI>().text = stats.ownedBalls[i].name;
                 newItem.GetComponentInChildren<CircleCollider2D>().GetComponent<TextMeshProUGUI>().text = nameCount(stats.ownedBalls[i].name, stats.ownedBalls) + "x";
                 newItem.GetComponentInChildren<Image>().sprite = stats.ownedBalls[i].GetComponent<SpriteRenderer>().sprite;
+                invItems.Add(newItem);
                 num++;
             }
         }
 
+        int num2 = 0;
         for (int i = 0; i < stats.ownedPegs.Count; i++) //loads the amount of pegs you have into the inventory
         {
             if (!pegNames.Contains(stats.ownedPegs[i].name))
             {
                 pegNames.Add(stats.ownedPegs[i].name);
                 GameObject newItem = Instantiate(newInvItem, pegInv.transform);
-                newItem.transform.localPosition = new Vector3(-300 + (150 * (i < 5 ? i : i - 5)), (i < 5 ? 100 : -150), 0);
+                newItem.transform.localPosition = new Vector3(-300 + (150 * (num2 < 5 ? num2 : num2 - 5)), (num2 < 5 ? 100 : -150), 0);
                 newItem.GetComponentInChildren<BoxCollider2D>().GetComponent<TextMeshProUGUI>().text = stats.ownedPegs[i].name;
                 newItem.GetComponentInChildren<CircleCollider2D>().GetComponent<TextMeshProUGUI>().text = nameCount(stats.ownedPegs[i].name, stats.ownedPegs) + "x";
                 newItem.GetComponentInChildren<Image>().sprite = stats.ownedPegs[i].GetComponent<SpriteRenderer>().sprite;
+                invItems.Add(newItem);
+                num2++;
             }
         }
+    }
+
+    public void clearInventory()
+    {
+        for (int i = invItems.Count - 1; i >= 0; i--)
+            Destroy(invItems[i]);
+        invItems.Clear();
     }
     private int nameCount(string nameNeeded, List<GameObject> objects)
     {

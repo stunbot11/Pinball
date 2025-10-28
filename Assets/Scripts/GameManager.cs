@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour
         stats = GameObject.Find("PlayerStats").GetComponent<PlayerStats>();
         playerControlls = GameObject.Find("Controlls").GetComponent<PlayerControlls>();
         pegSlots = GameObject.Find("Available Pegs").GetComponentsInChildren<Transform>();
+        playerControlls.sceneStart();
         availablePegs = new bool[pegSlots.Length];
         for (int i = 0; i < pegSlots.Length; i++)
         {

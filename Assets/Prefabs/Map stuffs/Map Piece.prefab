@@ -291,6 +291,8 @@ MonoBehaviour:
   lastFloor: 0
   isCurrent: 0
   floor: 0
+  quotaMult: 0
+  playableScenes: 2
   scene: Board 1
 --- !u!120 &7531918360508832030
 LineRenderer:

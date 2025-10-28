@@ -69,7 +69,14 @@ public class Shop : MonoBehaviour
             ballShopItem[i].GetComponentInChildren<CapsuleCollider2D>().GetComponent<Image>().sprite = balls[rNum].Icon;
             ballShopItem[i].GetComponentInChildren<CircleCollider2D>().GetComponent<TextMeshProUGUI>().text = balls[rNum].baseCost.ToString();
             int ballnum = i;
-            ballShopItem[i].GetComponentInChildren<Button>().onClick.AddListener(() => buy(currentBallShopItemData[ballnum]));
+            bool enchanted = Random.Range(0, 1f) <= ballEnchantChance;
+            if (enchanted)
+            {
+                BallEnchants thisEnchant = new BallEnchants();
+                thisEnchant.ranEnchant();
+                ballShopItem[i].GetComponentInChildren<PolygonCollider2D>().GetComponent<Image>().color = thisEnchant.shopColor;
+            }
+            ballShopItem[i].GetComponentInChildren<Button>().onClick.AddListener(() => buy(currentBallShopItemData[ballnum], enchanted));
             balls[rNum].shopItem = ballShopItem[i];
         }
     }
@@ -104,12 +111,16 @@ public class Shop : MonoBehaviour
             pegShopItem[i].GetComponentInChildren<CapsuleCollider2D>().GetComponent<Image>().sprite = pegs[rNum].Icon;
             pegShopItem[i].GetComponentInChildren<CircleCollider2D>().GetComponent<TextMeshProUGUI>().text = pegs[rNum].baseCost.ToString();
             int pegnum = i;
-            pegShopItem[pegnum].GetComponentInChildren<Button>().onClick.AddListener(() => buy(currentPegShopItemData[pegnum]));
-            pegs[rNum].shopItem = pegShopItem[i];
-            if (Random.Range(0, 1f) <= pegEnchantChance)
+            bool enchanted = Random.Range(0, 1f) <= pegEnchantChance;
+            if (enchanted)
             {
-                pegs[rNum].AddComponent<PegEnchants>();
+                PegEnchants thisEnchant = new PegEnchants();
+                thisEnchant.ranEnchant();
+                pegShopItem[i].GetComponentInChildren<PolygonCollider2D>().GetComponent<Image>().color = thisEnchant.shopColor;
             }
+            pegShopItem[pegnum].GetComponentInChildren<Button>().onClick.AddListener(() => buy(currentPegShopItemData[pegnum], enchanted));
+            pegs[rNum].shopItem = pegShopItem[i];
+            
         }
     }
 

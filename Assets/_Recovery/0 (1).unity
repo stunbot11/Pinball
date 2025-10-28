@@ -523,9 +523,9 @@ MonoBehaviour:
   currentPegShopItemData: []
   currentModShopItemData: []
   rBallCost: 5
-  ballEnchantChance: 0
+  ballEnchantChance: 0.5
   rPegCost: 5
-  pegEnchantChance: 0
+  pegEnchantChance: 1
   refreshMult: 1.5
   modEnchantChance: 0
 --- !u!4 &158878662

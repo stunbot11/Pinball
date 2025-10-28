@@ -4,6 +4,7 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     GameManager gameManager;
+    public BallEnchants enchants;
     public List<BallEffects> effects;
     public float ppb;
     public float mult;
