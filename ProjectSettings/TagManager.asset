@@ -8,6 +8,8 @@ TagManager:
   - KillZone
   - Start
   - Ball
+  - Paddle Right
+  - Paddle Left
   layers:
   - Default
   - TransparentFX

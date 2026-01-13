@@ -6,8 +6,8 @@ public class PlayerControlls : MonoBehaviour
     private GameManager gameManager;
     [HideInInspector] public Controls controls;
 
-    public Rigidbody2D[] PLRB;
-    public Rigidbody2D[] PRRB;
+    public GameObject[] rightPaddles;
+    public GameObject[] leftPaddles;
 
     public int maxLU;
     [HideInInspector] public int leftUses;
@@ -31,6 +31,8 @@ public class PlayerControlls : MonoBehaviour
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         controls = new Controls();
         controls.Paddles.Enable();
+        rightPaddles = GameObject.FindGameObjectsWithTag("Paddle Right");
+        leftPaddles = GameObject.FindGameObjectsWithTag("Paddle Left");
         controls.Paddles.Launch.canceled += launch;
         controls.Paddles.Launch.started += launch;
         controls.Paddles.Right.started += right;
@@ -49,16 +51,15 @@ public class PlayerControlls : MonoBehaviour
     {
         if (controls.Paddles.Right.IsInProgress())
         {
-            for (int i = 0; i < PRRB.Length; i++)
-                PRRB[i].AddForceY(paddleForce);
+            for (int i = 0; i < rightPaddles.Length; i++)
+                rightPaddles[i].GetComponent<Rigidbody2D>().AddForceY(paddleForce);
         }
 
         if (controls.Paddles.Left.IsInProgress())
         {
-            for (int i = 0; i < PLRB.Length; i++)
-                PLRB[i].AddForceY(paddleForce);
-        }    
-
+            for (int i = 0; i < leftPaddles.Length; i++)
+                leftPaddles[i].GetComponent<Rigidbody2D>().AddForceY(paddleForce);
+        }
         if (controls.Paddles.Launch.inProgress && !ballInPlay)
             launchTime += Time.deltaTime;
     }
@@ -79,34 +80,59 @@ public class PlayerControlls : MonoBehaviour
     {
         if (phase.started && rightUses > 0 && ballInPlay)
         {
-            for (int i = 0; i < PRRB.Length; i++)
-                PRRB[i].GetComponent<HingeJoint2D>().useMotor = false;
             rightUses--;
             gameManager.RUtxt.text = "Right Uses Left: " + rightUses;
+            foreach (GameObject paddle in rightPaddles)
+                paddle.GetComponent<Paddle>().Move(true);
+        }
+        else if (phase.canceled)
+        {
+            foreach (GameObject paddle in rightPaddles)
+                paddle.GetComponent<Paddle>().Move(false);
         }
 
-        if (phase.canceled)
-        {
-            for (int i = 0; i < PRRB.Length; i++)
-                PRRB[i].GetComponent<HingeJoint2D>().useMotor = true;
-        }
+        //if (phase.started && rightUses > 0 && ballInPlay)
+        //{
+        //    for (int i = 0; i < PRRB.Length; i++)
+        //        PRRB[i].GetComponent<HingeJoint2D>().useMotor = false;
+        //    rightUses--;
+        //    gameManager.RUtxt.text = "Right Uses Left: " + rightUses;
+        //}
+
+        //if (phase.canceled)
+        //{
+        //    for (int i = 0; i < PRRB.Length; i++)
+        //        PRRB[i].GetComponent<HingeJoint2D>().useMotor = true;
+        //}
     }
 
     public void left(InputAction.CallbackContext phase)
     {
         if (phase.started && leftUses > 0 && ballInPlay)
         {
-            for (int i = 0; i < PLRB.Length; i++)
-                PLRB[i].GetComponent<HingeJoint2D>().useMotor = false;
             leftUses--;
             gameManager.LUtxt.text = "Left Uses Left: " + leftUses;
+            foreach (GameObject paddle in leftPaddles)
+                paddle.GetComponent<Paddle>().Move(true);
         }
+        else if (phase.canceled)
+        {
+            foreach (GameObject paddle in leftPaddles)
+                paddle.GetComponent<Paddle>().Move(false);
+        }
+        //if (phase.started && leftUses > 0 && ballInPlay)
+        //{
+        //    for (int i = 0; i < PLRB.Length; i++)
+        //        PLRB[i].GetComponent<HingeJoint2D>().useMotor = false;
+        //    leftUses--;
+        //    gameManager.LUtxt.text = "Left Uses Left: " + leftUses;
+        //}
             
 
-        if (phase.canceled)
-        {
-            for (int i = 0; i < PLRB.Length; i++)
-                PLRB[i].GetComponent<HingeJoint2D>().useMotor = true;
-        }
+        //if (phase.canceled)
+        //{
+        //    for (int i = 0; i < PLRB.Length; i++)
+        //        PLRB[i].GetComponent<HingeJoint2D>().useMotor = true;
+        //}
     }
 }

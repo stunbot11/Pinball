@@ -1737,9 +1737,10 @@ GameObject:
   - component: {fileID: 596759123}
   - component: {fileID: 596759124}
   - component: {fileID: 596759125}
+  - component: {fileID: 596759126}
   m_Layer: 0
   m_Name: left
-  m_TagString: Untagged
+  m_TagString: Paddle Left
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1916,6 +1917,18 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: 40
     m_UpperAngle: -40
+--- !u!114 &596759126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 596759120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0525c4a40e5c814f959ca247954ce43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Paddle
 --- !u!1 &653349509
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,9 +2801,10 @@ GameObject:
   - component: {fileID: 1132950140}
   - component: {fileID: 1132950141}
   - component: {fileID: 1132950142}
+  - component: {fileID: 1132950143}
   m_Layer: 0
   m_Name: right
-  m_TagString: Untagged
+  m_TagString: Paddle Right
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2967,6 +2981,18 @@ HingeJoint2D:
   m_AngleLimits:
     m_LowerAngle: -40
     m_UpperAngle: 40
+--- !u!114 &1132950143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132950137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0525c4a40e5c814f959ca247954ce43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Paddle
 --- !u!1 &1161813339
 GameObject:
   m_ObjectHideFlags: 0
@@ -3660,10 +3686,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03186fffa847433458f7ab80e795262a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PLRB:
-  - {fileID: 596759124}
-  PRRB:
-  - {fileID: 1132950141}
   maxLU: 5
   leftUses: 1000
   maxRU: 5

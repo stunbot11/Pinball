@@ -39,6 +39,7 @@ public class Pegs : MonoBehaviour
         if (collision.gameObject.CompareTag("Ball"))
         {
             effectTrigger(collision.gameObject);
+            gameManager.playerControlls.GetComponent<Combo>().Hit();
         }
     }
 }

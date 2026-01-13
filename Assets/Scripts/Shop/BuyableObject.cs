@@ -16,6 +16,7 @@ public class BuyableObject : ScriptableObject
         Peg,
         Modifier
     }
+    [TextArea] public string description;
 
     public rareness rarity;
     public enum rareness

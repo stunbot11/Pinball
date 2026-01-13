@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 009edf17e0cfa554e8adc7d9a5f98d16, type: 3}
-  m_Name: Basic
-  m_EditorClassIdentifier: 
+  m_Name: Pass Through
+  m_EditorClassIdentifier: Assembly-CSharp::BuyableObject
   shopItem: {fileID: 0}
-  buyable: {fileID: 2368347832262084868, guid: 9cd770cb412d32841b83128b14b60132, type: 3}
-  Icon: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  baseCost: 5
+  buyable: {fileID: 2368347832262084868, guid: 2ff5bff85069fb240912c6af47b1fab7, type: 3}
+  Icon: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
+  baseCost: 7
   shopType: 1
-  description: A basic peg that activates the balls effects
-  rarity: 0
+  description: Activates the ball when the ball moves through this
+  rarity: 2

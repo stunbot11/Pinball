@@ -17,4 +17,6 @@ MonoBehaviour:
   Icon: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   baseCost: 15
   shopType: 1
+  description: A peg that will split the ball into 2 peices while reducing the size
+    by 20%
   rarity: 2

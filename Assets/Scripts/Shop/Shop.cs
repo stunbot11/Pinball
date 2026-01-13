@@ -110,6 +110,9 @@ public class Shop : MonoBehaviour
             pegShopItem[i].name = pegs[rNum].name;
             pegShopItem[i].GetComponentInChildren<CapsuleCollider2D>().GetComponent<Image>().sprite = pegs[rNum].Icon;
             pegShopItem[i].GetComponentInChildren<CircleCollider2D>().GetComponent<TextMeshProUGUI>().text = pegs[rNum].baseCost.ToString();
+            GameObject des = pegShopItem[i].GetComponentInChildren<EdgeCollider2D>().transform.gameObject;
+            des.GetComponentInChildren<TextMeshProUGUI>().text = pegs[rNum].description;
+            des.SetActive(false);
             int pegnum = i;
             bool enchanted = Random.Range(0, 1f) <= pegEnchantChance;
             if (enchanted)

@@ -10,6 +10,9 @@ public class PegEffects : ScriptableObject
         ballLoader
     }
 
+    [TextArea]
+    public string description; 
+
     public float effectAmount;
     public float maxAmount;
 
