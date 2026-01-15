@@ -49,17 +49,6 @@ public class PlayerControlls : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (controls.Paddles.Right.IsInProgress())
-        {
-            for (int i = 0; i < rightPaddles.Length; i++)
-                rightPaddles[i].GetComponent<Rigidbody2D>().AddForceY(paddleForce);
-        }
-
-        if (controls.Paddles.Left.IsInProgress())
-        {
-            for (int i = 0; i < leftPaddles.Length; i++)
-                leftPaddles[i].GetComponent<Rigidbody2D>().AddForceY(paddleForce);
-        }
         if (controls.Paddles.Launch.inProgress && !ballInPlay)
             launchTime += Time.deltaTime;
     }
