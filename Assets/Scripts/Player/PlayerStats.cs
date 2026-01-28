@@ -22,6 +22,13 @@ public class PlayerStats : MonoBehaviour
 
     public float modMult;
 
+    [Header("Combo Meter")]
+    public float maxTime;
+    public float startingMult;
+    public float multGain;
+    public int baseHitsNeeded;
+    public int hitsNeededIncrease;
+
     [Header("Shop stuff")]
     public int ballShopSlots;
     public int pegShopSlots;
